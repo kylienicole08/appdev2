@@ -1,0 +1,25 @@
+const eventEmitter = require("events");
+const emitter = new EventEmitter(); //2
+
+emitter.on("start", () => {
+    console.log("Application Started");
+});
+emitter.on("data", (data) => {
+    console.log("Data Received", data);
+}); //3
+
+emitter.emit("start");
+emitter.emit("data", "John", 30); //4
+
+emitter.on("error", (err) => {
+    console.log("Error occurred: ", err);
+}); //5
+
+emitter.emit("error", new Error("Something wrong!")); //6
+
+//run node event.js to see the output //7
+
+//Verify the Operation:
+//a. "start"
+//b. "data"
+//c. "error" //8
